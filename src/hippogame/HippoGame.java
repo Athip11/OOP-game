@@ -14,28 +14,26 @@ import java.io.IOException;
 
 class SoundPlayer {
 
-    // ฟังก์ชันสำหรับเล่นเสียง
     public static void playSound(String soundFile) {
         try {
-            // โหลดไฟล์เสียง
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(SoundPlayer.class.getResource("/" + soundFile));
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
-            clip.start();  // เล่นเสียง
+            clip.start(); 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
 
-    // ฟังก์ชันสำหรับเล่นเพลงวนซ้ำ
+
     public static Clip playMusic(String musicFile) {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(SoundPlayer.class.getResource("/" + musicFile));
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);  // เล่นเพลงวนซ้ำ
+            clip.loop(Clip.LOOP_CONTINUOUSLY);  
             clip.start();
-            return clip;  // คืนค่า Clip กลับไปเพื่อควบคุมการหยุดเสียงในภายหลัง
+            return clip;  
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
